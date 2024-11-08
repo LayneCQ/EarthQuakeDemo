@@ -30,8 +30,8 @@ struct EarthQuake: Decodable {
         
         let mag: Float
         let place: String
-        let time: Int64
-        let updated: Int64
+        let time: String
+        let updated: String
         let tz: Int?
         let url: String
         let detail: String
@@ -64,8 +64,17 @@ struct EarthQuake: Decodable {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             mag = try container.decode(Float.self, forKey: .mag)
             place = try container.decode(String.self, forKey: .place)
-            time = try container.decode(Int64.self, forKey: .time)
-            updated = try container.decode(Int64.self, forKey: .updated)
+
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            formatter.timeZone = .current
+
+            let timeInterval = try container.decode(Double.self, forKey: .time)
+            time = formatter.string(from: Date(timeIntervalSince1970: timeInterval / 1000.0))
+
+            let updatedTimeInterval = try container.decode(Double.self, forKey: .updated)
+            updated = formatter.string(from: Date(timeIntervalSince1970: updatedTimeInterval / 1000.0))
+
             tz = try container.decodeIfPresent(Int.self, forKey: .tz)
             url = try container.decode(String.self, forKey: .url)
             detail = try container.decode(String.self, forKey: .detail)
@@ -124,8 +133,8 @@ struct EarthQuake: Decodable {
 
 struct EarthQuakeList: Decodable {
     
-    let earthQuakes: [EarthQuake]
-    
+    private let earthQuakes: [EarthQuake]
+
     enum CodingKeys: String, CodingKey {
         case earthQuakes = "features"
     }
@@ -133,5 +142,15 @@ struct EarthQuakeList: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         earthQuakes = try container.decode([EarthQuake].self, forKey: .earthQuakes)
+    }
+}
+
+extension EarthQuakeList {
+
+    var count: Int { earthQuakes.count }
+
+    subscript(index: Int) -> EarthQuake? {
+        guard (0..<earthQuakes.count).contains(index) else { return nil }
+        return earthQuakes[index]
     }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C0E0C0F2CDDAFF600617815 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0E0C0E2CDDAFF600617815 /* WebService.swift */; };
+		3C0E0C172CDDFAD200617815 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0E0C162CDDFAD200617815 /* MapViewController.swift */; };
 		AD84D79B2CDCFBAD00D058C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD84D79A2CDCFBAD00D058C5 /* AppDelegate.swift */; };
 		AD84D7A42CDCFBAE00D058C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD84D7A32CDCFBAE00D058C5 /* Assets.xcassets */; };
 		AD84D7A72CDCFBAE00D058C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD84D7A52CDCFBAE00D058C5 /* LaunchScreen.storyboard */; };
@@ -18,6 +20,8 @@
 		AD84D7D22CDCFF8800D058C5 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD84D7D12CDCFF8800D058C5 /* MainViewModel.swift */; };
 		AD84D7D52CDD069800D058C5 /* EarthQuake.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD84D7D42CDD069800D058C5 /* EarthQuake.swift */; };
 		AD84D7DB2CDD215B00D058C5 /* EarthquakeData.json in Resources */ = {isa = PBXBuildFile; fileRef = AD84D7DA2CDD215B00D058C5 /* EarthquakeData.json */; };
+		ADDB3A0E2CE07BA500365FAC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = ADDB3A0D2CE07BA500365FAC /* Alamofire */; };
+		ADDB3A112CE07BDB00365FAC /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = ADDB3A102CE07BDB00365FAC /* MBProgressHUD */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C0E0C0E2CDDAFF600617815 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		3C0E0C162CDDFAD200617815 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		AD84D7972CDCFBAD00D058C5 /* EarthQuake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EarthQuake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD84D79A2CDCFBAD00D058C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD84D7A32CDCFBAE00D058C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,6 +66,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADDB3A112CE07BDB00365FAC /* MBProgressHUD in Frameworks */,
+				ADDB3A0E2CE07BA500365FAC /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +88,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C0E0C092CDDAC3B00617815 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				AD84D7DA2CDD215B00D058C5 /* EarthquakeData.json */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		3C0E0C0D2CDDAFE000617815 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				3C0E0C0E2CDDAFF600617815 /* WebService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		AD84D78E2CDCFBAD00D058C5 = {
 			isa = PBXGroup;
 			children = (
@@ -115,7 +139,7 @@
 		AD84D7B02CDCFBAF00D058C5 /* EarthQuakeTests */ = {
 			isa = PBXGroup;
 			children = (
-				AD84D7DA2CDD215B00D058C5 /* EarthquakeData.json */,
+				3C0E0C092CDDAC3B00617815 /* Data */,
 				AD84D7B12CDCFBAF00D058C5 /* EarthQuakeTests.swift */,
 			);
 			path = EarthQuakeTests;
@@ -133,9 +157,11 @@
 		AD84D7CA2CDCFC5B00D058C5 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				AD84D7CE2CDCFF3F00D058C5 /* Logic */,
+				3C0E0C0D2CDDAFE000617815 /* Service */,
+				AD84D7CE2CDCFF3F00D058C5 /* ViewModel */,
 				AD84D7CD2CDCFF2C00D058C5 /* View */,
 				AD84D7CB2CDCFC6E00D058C5 /* MainViewController.swift */,
+				3C0E0C162CDDFAD200617815 /* MapViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -148,13 +174,13 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		AD84D7CE2CDCFF3F00D058C5 /* Logic */ = {
+		AD84D7CE2CDCFF3F00D058C5 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				AD84D7D32CDD064B00D058C5 /* Model */,
 				AD84D7D12CDCFF8800D058C5 /* MainViewModel.swift */,
 			);
-			path = Logic;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		AD84D7D32CDD064B00D058C5 /* Model */ = {
@@ -181,6 +207,10 @@
 			dependencies = (
 			);
 			name = EarthQuake;
+			packageProductDependencies = (
+				ADDB3A0D2CE07BA500365FAC /* Alamofire */,
+				ADDB3A102CE07BDB00365FAC /* MBProgressHUD */,
+			);
 			productName = EarthQuake;
 			productReference = AD84D7972CDCFBAD00D058C5 /* EarthQuake.app */;
 			productType = "com.apple.product-type.application";
@@ -253,6 +283,10 @@
 				Base,
 			);
 			mainGroup = AD84D78E2CDCFBAD00D058C5;
+			packageReferences = (
+				ADDB3A0C2CE07BA500365FAC /* XCRemoteSwiftPackageReference "Alamofire" */,
+				ADDB3A0F2CE07BDB00365FAC /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
+			);
 			productRefGroup = AD84D7982CDCFBAD00D058C5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -296,11 +330,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C0E0C0F2CDDAFF600617815 /* WebService.swift in Sources */,
 				AD84D7CC2CDCFC6E00D058C5 /* MainViewController.swift in Sources */,
 				AD84D79B2CDCFBAD00D058C5 /* AppDelegate.swift in Sources */,
 				AD84D7D02CDCFF7200D058C5 /* EarthQuakeItemCell.swift in Sources */,
 				AD84D7D22CDCFF8800D058C5 /* MainViewModel.swift in Sources */,
 				AD84D7D52CDD069800D058C5 /* EarthQuake.swift in Sources */,
+				3C0E0C172CDDFAD200617815 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,6 +664,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		ADDB3A0C2CE07BA500365FAC /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		ADDB3A0F2CE07BDB00365FAC /* XCRemoteSwiftPackageReference "MBProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:jdg/MBProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ADDB3A0D2CE07BA500365FAC /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ADDB3A0C2CE07BA500365FAC /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		ADDB3A102CE07BDB00365FAC /* MBProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ADDB3A0F2CE07BDB00365FAC /* XCRemoteSwiftPackageReference "MBProgressHUD" */;
+			productName = MBProgressHUD;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AD84D78F2CDCFBAD00D058C5 /* Project object */;
 }

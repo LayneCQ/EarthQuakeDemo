@@ -24,15 +24,15 @@ class EarthQuakeTests: XCTestCase {
             return
         }
         
-        XCTAssertEqual(earthquakeList.earthQuakes.count, 19)
-        let first = earthquakeList.earthQuakes[0]
+        XCTAssertEqual(earthquakeList.count, 19)
+        let first = earthquakeList[0]!
         XCTAssertEqual(first.id, "us7000lgwp")
         XCTAssertEqual(first.geometry.coordinates, [169.3089, -20.6152, 48])
         
         XCTAssertEqual(first.properties.mag, 7.1)
         XCTAssertEqual(first.properties.place, "118 km S of Isangel, Vanuatu")
-        XCTAssertEqual(first.properties.time, 1701953790184)
-        XCTAssertEqual(first.properties.updated, 1707608860040)
+        XCTAssertEqual(first.properties.time, "2023-12-07 20:56:30")
+        XCTAssertEqual(first.properties.updated, "2024-02-11 07:47:40")
         XCTAssertNil(first.properties.tz)
         XCTAssertEqual(first.properties.url, "https://earthquake.usgs.gov/earthquakes/eventpage/us7000lgwp")
         XCTAssertEqual(first.properties.detail, "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7000lgwp&format=geojson")

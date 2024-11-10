@@ -20,9 +20,10 @@ class MapViewController: UIViewController {
         return view
     }()
 
-    init(url: URL) {
+    init(url: URL, title: String) {
         self.url = url
         super.init(nibName: nil, bundle: nil)
+        self.title = title
         setupViews()
         setupConstraints()
     }

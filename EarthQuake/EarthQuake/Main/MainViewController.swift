@@ -89,12 +89,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        guard let urlString = viewModel.data?[indexPath.row]?.properties.url,
+        guard let earthquake = viewModel.data?[indexPath.row],
               // Map information indicating the location of the earthquake is already provided by USGS
               // We use it directly.
-              let url = URL(string: urlString + "/map")
+              let url = URL(string: earthquake.properties.url + "/map")
         else { return }
-        let mapViewController = MapViewController(url: url)
+        let mapViewController = MapViewController(url: url, title: earthquake.properties.title)
         navigationController?.pushViewController(mapViewController, animated: true)
     }
 }
